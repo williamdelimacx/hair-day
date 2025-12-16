@@ -1,11 +1,10 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import "tailwindcss";
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+:root {
+  font-family: var(--font-sans);
+
+  color: var(--color-gray-100);
+  background-color: var(--color-gray-800);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,56 +12,63 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+@theme {
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-black: #000000;
+  --color-white: #ffffff;
+
+  --color-yellow-light: #dbc170;
+  --color-yellow: #b8952e;
+  --color-yellow-dark: #846f2e;
+
+  --color-gray-100: #f5f4f5;
+  --color-gray-200: #b2afb6;
+  --color-gray-300: #98959d;
+  --color-gray-400: #7a767f;
+  --color-gray-500: #3e3c41;
+  --color-gray-600: #2e2c30;
+  --color-gray-700: #232225;
+  --color-gray-800: #19181b;
+  --color-gray-900: #050505;
+
+  --font-sans: "Catamaran", sans-serif;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@layer components {
+  .c-title-lg {
+    font-family: var(--font-sans);
+    font-size: 2rem;
+    line-height: 1.5rem;
+    font-weight: bold;
   }
-  a:hover {
-    color: #747bff;
+
+  .c-title-md {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: bold;
   }
-  button {
-    background-color: #f9f9f9;
+
+  .c-title-sm {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: bold;
+  }
+
+  .c-text-md {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 400;
+  }
+
+  .c-text-sm {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 400;
   }
 }
