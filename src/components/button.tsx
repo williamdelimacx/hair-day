@@ -21,10 +21,8 @@ export const buttonVariants = cva(
 );
 
 interface ButtonProps
-  extends Omit<React.ComponentProps<"button">, "size" | "disabled">,
-    VariantProps<typeof buttonVariants> {
-  handling?: boolean;
-}
+  extends React.ComponentProps<"button">,
+    Omit<VariantProps<typeof buttonVariants>, "disabled"> {}
 
 export default function Button({
   disabled,
@@ -38,6 +36,7 @@ export default function Button({
         className,
         disabled,
       })}
+      type="button"
       {...props}
     >
       <Text variant="title-sm" className="text-gray-900 uppercase">

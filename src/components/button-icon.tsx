@@ -27,6 +27,7 @@ export default function ButtonIcon({
       className={buttonIconVariants({
         className,
       })}
+      type="button"
       {...props}
     >
       <Icon className={buttonIconIconVariants()} svg={icon} />
