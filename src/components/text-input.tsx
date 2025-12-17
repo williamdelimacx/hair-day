@@ -1,6 +1,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import Icon from "./icon";
 import { textVariants } from "./text";
+import { twMerge } from "tailwind-merge";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const textInputVariantsContainer = cva(
@@ -27,14 +28,16 @@ export default function TextInput({
   ...props
 }: TextInputProps) {
   return (
-    <label className={textInputVariantsContainer({ className })}>
+    <label className={twMerge(textInputVariantsContainer({ className }))}>
       <Icon svg={icon} className={textInputVariantsIcon()} />
       <input
         type="text"
-        className={textVariants({
-          variant: "text-md",
-          className: textInputVariants(),
-        })}
+        className={twMerge(
+          textVariants({
+            variant: "text-md",
+            className: textInputVariants(),
+          })
+        )}
         {...props}
       />
     </label>

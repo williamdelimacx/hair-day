@@ -1,5 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import Text from "./text";
+import { twMerge } from "tailwind-merge";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const buttonVariants = cva(
@@ -32,10 +33,12 @@ export default function Button({
 }: ButtonProps) {
   return (
     <button
-      className={buttonVariants({
-        className,
-        disabled,
-      })}
+      className={twMerge(
+        buttonVariants({
+          className,
+          disabled,
+        })
+      )}
       type="button"
       {...props}
     >

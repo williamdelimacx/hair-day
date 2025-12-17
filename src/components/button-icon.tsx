@@ -1,5 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import Icon from "./icon";
+import { twMerge } from "tailwind-merge";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const buttonIconVariants = cva(
@@ -24,9 +25,11 @@ export default function ButtonIcon({
 }: ButtonIconProps) {
   return (
     <button
-      className={buttonIconVariants({
-        className,
-      })}
+      className={twMerge(
+        buttonIconVariants({
+          className,
+        })
+      )}
       type="button"
       {...props}
     >

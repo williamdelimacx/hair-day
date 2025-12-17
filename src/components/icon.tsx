@@ -1,4 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
+import { twMerge } from "tailwind-merge";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const iconVariants = cva("", {
@@ -26,6 +27,9 @@ export default function Icon({
   ...props
 }: IconProps) {
   return (
-    <SvgComponent className={iconVariants({ animate, className })} {...props} />
+    <SvgComponent
+      className={twMerge(iconVariants({ animate, className }))}
+      {...props}
+    />
   );
 }

@@ -5,23 +5,19 @@ import ChevronDown from "../assets/icons/CaretDown.svg?react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { useRef } from "react";
 import Calendar from "../assets/icons/CalendarBlank.svg?react";
-import { withTwMerge } from "../lib/utils";
+import { twMerge } from "tailwind-merge";
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const datePickerVariantsContainer = withTwMerge(
-  cva(
-    "cursor-pointer focus-within:border-yellow-dark transition-colors p-3 rounded-xl border border-gray-500 flex items-center justify-center gap-2"
-  )
+export const datePickerVariantsContainer = cva(
+  "cursor-pointer focus-within:border-yellow-dark transition-colors p-3 rounded-xl border border-gray-500 flex items-center justify-center gap-2"
 );
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const datePickerVariantsIcon = withTwMerge(cva("size-5 fill-yellow"));
+export const datePickerVariantsIcon = cva("size-5 fill-yellow");
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const datePickerVariantsInput = withTwMerge(
-  cva(
-    "cursor-pointer w-full outline-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-inner-spin-button]:hidden [&::-webkit-outer-spin-button]:hidden"
-  )
+export const datePickerVariantsInput = cva(
+  "cursor-pointer w-full outline-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-inner-spin-button]:hidden [&::-webkit-outer-spin-button]:hidden"
 );
 
 interface DatePickerProps
@@ -47,7 +43,7 @@ export default function DatePicker({
 
   return (
     <button
-      className={datePickerVariantsContainer({ className })}
+      className={twMerge(datePickerVariantsContainer({ className }))}
       onClick={openDatePicker}
     >
       <Icon svg={icon} className={datePickerVariantsIcon()} />
@@ -55,9 +51,11 @@ export default function DatePicker({
       <input
         ref={dateRef}
         type="date"
-        className={datePickerVariantsInput({
-          className: textVariants({ className: "text-gray-200" }),
-        })}
+        className={twMerge(
+          datePickerVariantsInput({
+            className: twMerge(textVariants({ className: "text-gray-200" })),
+          })
+        )}
         min={new Date().toISOString().split("T")[0]}
         {...props}
       />

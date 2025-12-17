@@ -1,5 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { textVariants } from "./text";
+import { twMerge } from "tailwind-merge";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const timeSelectVariants = cva(
@@ -7,11 +8,11 @@ export const timeSelectVariants = cva(
   {
     variants: {
       disabled: {
-        true: "bg-transparent text-gray-500 pointer-events-none border-gray-700 hover:bg-transparent",
+        true: "bg-transparent pointer-events-none border-gray-700 hover:bg-transparent",
         false: "cursor-pointer",
       },
       selected: {
-        true: "text-yellow border-yellow pointer-events-none",
+        true: "border-yellow pointer-events-none",
         false: "",
       },
     },
@@ -35,14 +36,20 @@ export default function TimeSelect({
 }: TimeSelectProps) {
   return (
     <button
-      className={timeSelectVariants({
-        className: textVariants({
-          className: "text-gray-200",
-          variant: "text-md",
-        }),
-        disabled,
-        selected,
-      })}
+      className={twMerge(
+        timeSelectVariants({
+          className: textVariants({
+            className: disabled
+              ? "text-gray-500"
+              : selected
+              ? "text-yellow"
+              : "text-gray-200",
+            variant: "text-md",
+          }),
+          disabled,
+          selected,
+        })
+      )}
       type="button"
       disabled={disabled}
     >
