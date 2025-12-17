@@ -45,6 +45,7 @@ export default function DatePicker({
     <button
       className={twMerge(datePickerVariantsContainer({ className }))}
       onClick={openDatePicker}
+      type="button"
     >
       <Icon svg={icon} className={datePickerVariantsIcon()} />
 

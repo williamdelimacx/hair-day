@@ -6,7 +6,7 @@ import { twMerge } from "tailwind-merge";
 export const textVariants = cva("font-sans text-gray-400", {
   variants: {
     variant: {
-      "title-lg": "font-sans text-[2rem]/6 font-bold",
+      "title-lg": "font-sans text-2xl/8 font-bold",
       "title-md": "font-sans text-base/6 font-bold",
       "title-sm": "font-sans text-sm/5 font-bold",
       "text-md": "font-sans text-base/6 font-normal",
