@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+  color-scheme: dark;
   font-family: var(--font-sans);
 
   color: var(--color-gray-100);
@@ -34,41 +35,4 @@
   --color-gray-900: #050505;
 
   --font-sans: "Catamaran", sans-serif;
-}
-
-@layer components {
-  .c-title-lg {
-    font-family: var(--font-sans);
-    font-size: 2rem;
-    line-height: 1.5rem;
-    font-weight: bold;
-  }
-
-  .c-title-md {
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    line-height: 1.5rem;
-    font-weight: bold;
-  }
-
-  .c-title-sm {
-    font-family: var(--font-sans);
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    font-weight: bold;
-  }
-
-  .c-text-md {
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    line-height: 1.5rem;
-    font-weight: 400;
-  }
-
-  .c-text-sm {
-    font-family: var(--font-sans);
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    font-weight: 400;
-  }
 }

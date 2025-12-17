@@ -4,10 +4,12 @@ import UserSquare from "../assets/icons/UserSquare.svg?react";
 import Trash from "../assets/icons/Trash.svg?react";
 import ButtonIcon from "../components/button-icon";
 import TimeSelect from "../components/time-select";
+import DatePicker from "../components/date-picker";
 
 export function PageComponents() {
   return (
     <main className="flex flex-col gap-8 p-2">
+      <DatePicker />
       <Button disabled>Agendar</Button>
       <TextInput icon={UserSquare} placeholder="Type your name" />
       <ButtonIcon icon={Trash} />
