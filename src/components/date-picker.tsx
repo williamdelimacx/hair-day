@@ -54,7 +54,10 @@ export default function DatePicker({
         type="date"
         className={twMerge(
           datePickerVariantsInput({
-            className: twMerge(textVariants({ className: "text-gray-200" })),
+            className: twMerge(
+              textVariants({ className: "text-gray-200" }),
+              "max-w-24"
+            ),
           })
         )}
         min={new Date().toISOString().split("T")[0]}
