@@ -7,7 +7,7 @@ O projeto prioriza uma interface moderna, componentizada e de fácil usabilidade
 
 ## 📸 Preview
 
-![Preview da aplicação](./images/heroimage.png)
+![Preview da aplicação](./images/heroimage.jpg)
 
 ---
 
