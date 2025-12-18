@@ -10,6 +10,7 @@ export function PageComponents() {
   return (
     <main className="flex flex-col gap-8 p-2">
       <DatePicker />
+      <Button>Agendar</Button>
       <Button disabled>Agendar</Button>
       <TextInput icon={UserSquare} placeholder="Type your name" />
       <ButtonIcon icon={Trash} />

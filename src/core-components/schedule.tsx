@@ -1,23 +1,22 @@
 import { useState, type ChangeEvent } from "react";
+import useAppointments from "../hooks/use-appointments";
 import PeriodItem from "./period-item";
 import PeriodList from "./period-list";
 import ScheduleHeader from "./schedule-header";
 import dayjs from "dayjs";
-import useAppointments from "../hooks/use-appointments";
+import Text from "../components/text";
 
 export default function Schedule() {
-  const [filteredDate, setFilteredDate] = useState<Date>(new Date());
+  const [filteredDate, setFilteredDate] = useState<Date>(
+    dayjs().startOf("day").toDate()
+  );
   const { morningAppointments, afternoonAppointments, nightAppointments } =
     useAppointments({ filters: { date: filteredDate } });
-
-  function handleDelete(id: string) {
-    console.log("Delete appointment with id:", id);
-  }
 
   function handleFilteredDateChange(event: ChangeEvent<HTMLInputElement>) {
     if (!event.target.value) return;
 
-    const date = new Date(event.target.value);
+    const date = dayjs(event.target.value).startOf("day").toDate();
     setFilteredDate(date);
   }
 
@@ -31,39 +30,54 @@ export default function Schedule() {
 
         <div className="space-y-3">
           <PeriodList period="morning">
-            {morningAppointments.map((appointment) => (
-              <PeriodItem
-                key={appointment.id}
-                id={appointment.id}
-                time={dayjs(appointment.datetime).format("hh:mm")}
-                client={appointment.client}
-                onDelete={handleDelete}
-              />
-            ))}
+            {morningAppointments.length > 0 ? (
+              morningAppointments.map((appointment) => (
+                <PeriodItem
+                  key={appointment.id}
+                  id={appointment.id}
+                  time={appointment.time}
+                  client={appointment.client}
+                />
+              ))
+            ) : (
+              <Text variant="text-sm" className="text-gray-300">
+                Nenhum agendamento para este período
+              </Text>
+            )}
           </PeriodList>
 
           <PeriodList period="afternoon">
-            {afternoonAppointments.map((appointment) => (
-              <PeriodItem
-                key={appointment.id}
-                id={appointment.id}
-                time={dayjs(appointment.datetime).format("hh:mm")}
-                client={appointment.client}
-                onDelete={handleDelete}
-              />
-            ))}
+            {afternoonAppointments.length > 0 ? (
+              afternoonAppointments.map((appointment) => (
+                <PeriodItem
+                  key={appointment.id}
+                  id={appointment.id}
+                  time={appointment.time}
+                  client={appointment.client}
+                />
+              ))
+            ) : (
+              <Text variant="text-sm" className="text-gray-300">
+                Nenhum agendamento para este período
+              </Text>
+            )}
           </PeriodList>
 
           <PeriodList period="night">
-            {nightAppointments.map((appointment) => (
-              <PeriodItem
-                key={appointment.id}
-                id={appointment.id}
-                time={dayjs(appointment.datetime).format("hh:mm")}
-                client={appointment.client}
-                onDelete={handleDelete}
-              />
-            ))}
+            {nightAppointments.length > 0 ? (
+              nightAppointments.map((appointment) => (
+                <PeriodItem
+                  key={appointment.id}
+                  id={appointment.id}
+                  time={appointment.time}
+                  client={appointment.client}
+                />
+              ))
+            ) : (
+              <Text variant="text-sm" className="text-gray-300">
+                Nenhum agendamento para este período
+              </Text>
+            )}
           </PeriodList>
         </div>
       </div>

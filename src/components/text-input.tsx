@@ -1,6 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import Icon from "./icon";
 import { textVariants } from "./text";
+import Icon from "./icon";
 import { twMerge } from "tailwind-merge";
 
 // eslint-disable-next-line react-refresh/only-export-components

@@ -8,7 +8,7 @@ export const timeSelectVariants = cva(
   {
     variants: {
       disabled: {
-        true: "bg-transparent pointer-events-none border-gray-700 hover:bg-transparent",
+        true: "bg-transparent pointer-events-none border-gray-600 hover:bg-transparent",
         false: "cursor-pointer",
       },
       selected: {
@@ -24,7 +24,7 @@ export const timeSelectVariants = cva(
 );
 
 interface TimeSelectProps
-  extends React.ComponentProps<"button">,
+  extends React.ComponentProps<"input">,
     Omit<VariantProps<typeof timeSelectVariants>, "disabled"> {
   children?: React.ReactNode;
 }
@@ -33,9 +33,10 @@ export default function TimeSelect({
   children,
   disabled,
   selected,
+  ...props
 }: TimeSelectProps) {
   return (
-    <button
+    <label
       className={twMerge(
         timeSelectVariants({
           className: textVariants({
@@ -50,10 +51,9 @@ export default function TimeSelect({
           selected,
         })
       )}
-      type="button"
-      disabled={disabled}
     >
       {children}
-    </button>
+      <input type="radio" className="hidden" disabled={disabled} {...props} />
+    </label>
   );
 }
