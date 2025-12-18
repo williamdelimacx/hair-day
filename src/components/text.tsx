@@ -3,7 +3,7 @@ import React from "react";
 import { twMerge } from "tailwind-merge";
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const textVariants = cva("font-sans text-gray-400", {
+export const textVariants = cva("font-sans text-gray-200", {
   variants: {
     variant: {
       "title-lg": "font-sans text-2xl/8 font-bold",
