@@ -1,31 +1,33 @@
+import { useState, type ChangeEvent } from "react";
 import PeriodItem from "./period-item";
 import PeriodList from "./period-list";
 import ScheduleHeader from "./schedule-header";
-
-const morningAppointments = [
-  { time: "09:00", client: "Alice", id: "1" },
-  { time: "10:00", client: "Bob", id: "2" },
-];
-
-const afternoonAppointments = [
-  { time: "13:00", client: "Charlie", id: "3" },
-  { time: "14:00", client: "Diana", id: "4" },
-];
-
-const nightAppointments = [
-  { time: "19:00", client: "Eve", id: "5" },
-  { time: "20:00", client: "Frank", id: "6" },
-];
+import dayjs from "dayjs";
+import useAppointments from "../hooks/use-appointments";
 
 export default function Schedule() {
+  const [filteredDate, setFilteredDate] = useState<Date>(new Date());
+  const { morningAppointments, afternoonAppointments, nightAppointments } =
+    useAppointments({ filters: { date: filteredDate } });
+
   function handleDelete(id: string) {
     console.log("Delete appointment with id:", id);
+  }
+
+  function handleFilteredDateChange(event: ChangeEvent<HTMLInputElement>) {
+    if (!event.target.value) return;
+
+    const date = new Date(event.target.value);
+    setFilteredDate(date);
   }
 
   return (
     <div className="w-full py-20">
       <div className="mx-auto flex flex-col gap-8 max-w-170.5">
-        <ScheduleHeader />
+        <ScheduleHeader
+          filteredDate={filteredDate}
+          onChangeFilteredDate={handleFilteredDateChange}
+        />
 
         <div className="space-y-3">
           <PeriodList period="morning">
@@ -33,7 +35,7 @@ export default function Schedule() {
               <PeriodItem
                 key={appointment.id}
                 id={appointment.id}
-                time={appointment.time}
+                time={dayjs(appointment.datetime).format("hh:mm")}
                 client={appointment.client}
                 onDelete={handleDelete}
               />
@@ -45,7 +47,7 @@ export default function Schedule() {
               <PeriodItem
                 key={appointment.id}
                 id={appointment.id}
-                time={appointment.time}
+                time={dayjs(appointment.datetime).format("hh:mm")}
                 client={appointment.client}
                 onDelete={handleDelete}
               />
@@ -57,7 +59,7 @@ export default function Schedule() {
               <PeriodItem
                 key={appointment.id}
                 id={appointment.id}
-                time={appointment.time}
+                time={dayjs(appointment.datetime).format("hh:mm")}
                 client={appointment.client}
                 onDelete={handleDelete}
               />
